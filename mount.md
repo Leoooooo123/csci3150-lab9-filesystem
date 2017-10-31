@@ -2,9 +2,9 @@
 
 In Unix, all files are arranged under a big tree '/'. Uing`mount`can attach your device to it so that user can access.
 
-`mount`connects the device to a**mount point**\(A directory\). User can access it just like as a normal directory.
+`mount`connects the device to a **mount point** \(A directory\). User can access it just like as a normal directory.
 
-Remember to**unmount**after use, otherwise the file system is not fully synchonized, causing loss of data.
+Remember to **unmount** after use, otherwise the file system is not fully synchonized, causing loss of data.
 
 ## Steps {#steps}
 
@@ -53,5 +53,5 @@ $ fuser -vm ~/rd
 
 ![](assets/fuser.png)
 
-By these two commands, you can know`tail`with PID 11793 is occupying the resource. By killing it using`kill -9`, you can umount the resource successfully.
+By these two commands, you can know `tail` with PID 11793 is occupying the resource. By killing it using`kill -9`, you can umount the resource successfully.
 

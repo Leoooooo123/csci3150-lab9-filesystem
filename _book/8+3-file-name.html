@@ -435,7 +435,7 @@
                                 
                                 <h1 id="83-file-name">8+3 File Name </h1>
 <p>It is a standard of a filename used by FAT system.</p>
-<p>Filenames are limited to<strong>at most</strong>8 characters, followed by file extension of a period &apos;.&apos; and<strong>at most</strong>3 characters.</p>
+<p>Filenames are limited to <strong>at most</strong> 8 characters, followed by file extension of a period &apos;.&apos; and <strong>at most</strong> 3 characters.</p>
 <p>In the Dir Entry header, it is defined as:</p>
 <pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MSDOS_NAME      11      <span class="hljs-comment">/* maximum name length */</span></span>
 __u8    name[MSDOS_NAME];<span class="hljs-comment">/* name and extension */</span>
@@ -443,7 +443,7 @@ __u8    name[MSDOS_NAME];<span class="hljs-comment">/* name and extension */</sp
 <p>That&apos;s mean the size of the filename array is 11. Here are some examples of 8+3 filenames that stored inside the array.</p>
 <p><img src="assets/8.3.png" alt=""></p>
 <h2 id="file-deletion-and-file-name">File Deletion and File name </h2>
-<p>In FAT32, deleting a file does not mean to<strong>remove</strong>from the filesystem. It only deallocates the space that the file originally occupied and deletion is marked. In this case, the first character of the filename is marked with a special<code>0xe5</code>.</p>
+<p>In FAT32, deleting a file does not mean to <strong>remove</strong> from the filesystem. It only deallocates the space that the file originally occupied and deletion is marked. In this case, the first character of the filename is marked with a special<code>0xe5</code>.</p>
 
                                 
                                 </section>
@@ -487,7 +487,7 @@ __u8    name[MSDOS_NAME];<span class="hljs-comment">/* name and extension */</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8+3 File Name","level":"1.6.2","depth":2,"next":{"title":"Tranversing Cluster","level":"1.6.3","depth":2,"path":"tranversing-cluster.md","ref":"tranversing-cluster.md","articles":[]},"previous":{"title":"Read the header","level":"1.6.1.3","depth":3,"path":"read-the-header.md","ref":"read-the-header.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8+3-file-name.md","mtime":"2017-10-06T09:03:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-06T16:28:00.071Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8+3 File Name","level":"1.6.2","depth":2,"next":{"title":"Tranversing Cluster","level":"1.6.3","depth":2,"path":"tranversing-cluster.md","ref":"tranversing-cluster.md","articles":[]},"previous":{"title":"Read the header","level":"1.6.1.3","depth":3,"path":"read-the-header.md","ref":"read-the-header.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8+3-file-name.md","mtime":"2017-10-31T03:34:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-31T03:35:32.549Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

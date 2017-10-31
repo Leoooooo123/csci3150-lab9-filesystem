@@ -6,9 +6,9 @@
 
 This figure summarized the FAT32 filesystem.
 
-The first area contains the_reserved area\_and\_FAT Area_. They are counted in term of**sectors**.
+The first area contains the_reserved area\_and\_FAT Area_. They are counted in term of **sectors**.
 
-Immediately after_FAT area_, it is the starting point of**cluster 2**. It contains the information on the root directory and all data stored. In these areas they are counted in term of**clusters**.
+Immediately after_FAT area_, it is the starting point of **cluster 2**. It contains the information on the root directory and all data stored. In these areas they are counted in term of **clusters**.
 
 ## Boot sector {#boot-sector}
 
@@ -24,7 +24,7 @@ It is always at the\_first\_sector of the disk, and it is used for starting up y
 
 * The executable boot code \(or bootstrap code\) that starts the operating system.
 
-Among these elements, the important thing is the**BIOS parameter block \(BPB\)**, which allows us to obtain the fundamental information about the FAT file system.
+Among these elements, the important thing is the **BIOS parameter block \(BPB\)**, which allows us to obtain the fundamental information about the FAT file system.
 
 Here is the summary table on the fields for FAT32.
 
