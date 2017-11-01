@@ -123,7 +123,7 @@
                 <a href="file-permission.html">
             
                     
-                    File Permission
+                    File Permissions
             
                 </a>
             
@@ -136,7 +136,7 @@
                 <a href="dd.html">
             
                     
-                    dd
+                    Disk Duplication
             
                 </a>
             
@@ -149,7 +149,7 @@
                 <a href="mkfsvfat-create-fat-filesystems.html">
             
                     
-                    mkfs.vfat: Create FAT Filesystems
+                    Create FAT Filesystems
             
                 </a>
             
@@ -183,7 +183,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="viewing-with-hex-editor.html">
+        <li class="chapter " data-level="1.2.6" data-path="demo.html">
+            
+                <a href="demo.html">
+            
+                    
+                    Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="viewing-with-hex-editor.html">
             
                 <a href="viewing-with-hex-editor.html">
             
@@ -197,7 +210,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.6.1" data-path="endian-ness-in-fat32.html">
+        <li class="chapter active" data-level="1.2.7.1" data-path="endian-ness-in-fat32.html">
             
                 <a href="endian-ness-in-fat32.html">
             
@@ -238,7 +251,7 @@
                 <a href="directory-related-calls.html">
             
                     
-                    Directory Related Calls
+                    Directory Related Calls in C Language
             
                 </a>
             
@@ -434,15 +447,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="endianness-in-fat32">Endian-ness in FAT32 </h1>
-<p>Endian-ness is about byte ordering. We have two types: <strong>Big endian</strong> and <strong>little endian</strong>.</p>
+<p>Endian-ness is about byte ordering. We have two types: <strong>big endian</strong> and <strong>little endian</strong>.</p>
 <p>Suppose we see the following, which represents the bytes per sector.</p>
 <p><img src="assets/BPS.png" alt=""></p>
-<p>We have two ways to interpret this number, either<em>0x00 02_or_0x02 00</em></p>
+<p>We have two ways to interpret this number, either <em>0x00 02</em> or <em>0x02 00</em></p>
 <h2 id="big-endian">Big Endian </h2>
 <p>0x0002 = 2 bytes</p>
 <h2 id="little-endian">Little Endian </h2>
 <p>0x0200 = 512 bytes</p>
-<p>As in FAT32, <strong>Little Endian</strong> is used. Therefore, the number of bytes per sector is<em>512 bytes</em>.</p>
+<p>As in FAT32, <strong>little Endian</strong> is used. Therefore, the number of bytes per sector is <em>512 bytes</em>.</p>
 
                                 
                                 </section>
@@ -486,7 +499,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Endian-ness in FAT32","level":"1.2.6.1","depth":3,"next":{"title":"Linux File System Calls","level":"1.3","depth":1,"path":"linux-file-system-calls.md","ref":"linux-file-system-calls.md","articles":[]},"previous":{"title":"Viewing with Hex Editor","level":"1.2.6","depth":2,"path":"viewing-with-hex-editor.md","ref":"viewing-with-hex-editor.md","articles":[{"title":"Endian-ness in FAT32","level":"1.2.6.1","depth":3,"path":"endian-ness-in-fat32.md","ref":"endian-ness-in-fat32.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"endian-ness-in-fat32.md","mtime":"2017-10-31T03:48:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-31T03:50:35.079Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Endian-ness in FAT32","level":"1.2.7.1","depth":3,"next":{"title":"Linux File System Calls","level":"1.3","depth":1,"path":"linux-file-system-calls.md","ref":"linux-file-system-calls.md","articles":[]},"previous":{"title":"Viewing with Hex Editor","level":"1.2.7","depth":2,"path":"viewing-with-hex-editor.md","ref":"viewing-with-hex-editor.md","articles":[{"title":"Endian-ness in FAT32","level":"1.2.7.1","depth":3,"path":"endian-ness-in-fat32.md","ref":"endian-ness-in-fat32.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"endian-ness-in-fat32.md","mtime":"2017-10-31T09:52:55.942Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

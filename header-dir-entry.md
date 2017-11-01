@@ -1,4 +1,4 @@
-# Header: Dir Entry {#header-dir-entry}
+# Header: `msdos_dir_entry` {#header-dir-entry}
 
 ```c
 struct msdos_dir_entry {
@@ -34,7 +34,7 @@ In the structure, we can locate 1 byte of data storing the attribute of the file
 | 7 | 0x80 | Reserved |
 | 8 | 0x0F | Long File Name \(LFN\) |
 
-In C programming, we can apply bitwise AND \(&\) to check a particular attribute, eg:
+In C programming, we can apply bitwise AND \(&\) to check a particular attribute, e.g.,
 
 ```c
 if((dir_entry.attr & 0x10) != 0) {

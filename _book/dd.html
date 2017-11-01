@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>dd · GitBook</title>
+        <title>Disk Duplication · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -123,7 +123,7 @@
                 <a href="file-permission.html">
             
                     
-                    File Permission
+                    File Permissions
             
                 </a>
             
@@ -136,7 +136,7 @@
                 <a href="dd.html">
             
                     
-                    dd
+                    Disk Duplication
             
                 </a>
             
@@ -149,7 +149,7 @@
                 <a href="mkfsvfat-create-fat-filesystems.html">
             
                     
-                    mkfs.vfat: Create FAT Filesystems
+                    Create FAT Filesystems
             
                 </a>
             
@@ -183,7 +183,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="viewing-with-hex-editor.html">
+        <li class="chapter " data-level="1.2.6" data-path="demo.html">
+            
+                <a href="demo.html">
+            
+                    
+                    Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="viewing-with-hex-editor.html">
             
                 <a href="viewing-with-hex-editor.html">
             
@@ -197,7 +210,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.6.1" data-path="endian-ness-in-fat32.html">
+        <li class="chapter " data-level="1.2.7.1" data-path="endian-ness-in-fat32.html">
             
                 <a href="endian-ness-in-fat32.html">
             
@@ -238,7 +251,7 @@
                 <a href="directory-related-calls.html">
             
                     
-                    Directory Related Calls
+                    Directory Related Calls in C Language
             
                 </a>
             
@@ -418,7 +431,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >dd</a>
+        <a href="." >Disk Duplication</a>
     </h1>
 </div>
 
@@ -434,13 +447,13 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="disk-duplication-dd">Disk Duplication<code>dd</code> </h1>
-<p><code>dd</code>is a command for low-level copying. As the disks on Unix platform are represented like normal files, so<code>dd</code>can take input from/output to these devices. We also can use<code>dd</code>to create a &apos;virtual&apos; disk.</p>
+<p><code>dd</code>is a command for low-level copying. As the disks on *nix platform are represented like normal files, so <code>dd</code> can take input from/output to these devices. We can also use <code>dd</code> to create a <code>virtual disk</code>.</p>
 <p>To begin with, let &apos;s try the following command:</p>
 <pre><code>sudo dd if=FILE of=FILE bs=BYTES count=BLOCKS
 </code></pre><p><code>dd</code>takes few arguments:</p>
 <ul>
 <li><code>if</code>
-: Input file FILE (eg: /dev/zero,/dev/urandom)</li>
+: Input file FILE (e.g., /dev/zero,/dev/urandom)</li>
 <li><code>of</code>
 : Output file FILE</li>
 <li><code>bs</code>
@@ -453,6 +466,7 @@
 <pre><code>$ dd if=/dev/zero of=test.disk bs=64M count=1
 </code></pre><p>After that, you can see the result showing:</p>
 <p><img src="assets/dd.png" alt=""></p>
+<p>PLEASE BE CAREFUL &#x2013; <code>dd</code> is often nicknamed <code>disk destroyer</code> because it will happily overwrite any data you tell it to, including the stuff you wanted to keep if you make a mistake typing the command!</p>
 
                                 
                                 </section>
@@ -480,12 +494,12 @@
 
             
                 
-                <a href="file-permission.html" class="navigation navigation-prev " aria-label="Previous page: File Permission">
+                <a href="file-permission.html" class="navigation navigation-prev " aria-label="Previous page: File Permissions">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="mkfsvfat-create-fat-filesystems.html" class="navigation navigation-next " aria-label="Next page: mkfs.vfat: Create FAT Filesystems">
+                <a href="mkfsvfat-create-fat-filesystems.html" class="navigation navigation-next " aria-label="Next page: Create FAT Filesystems">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -496,7 +510,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"dd","level":"1.2.2","depth":2,"next":{"title":"mkfs.vfat: Create FAT Filesystems","level":"1.2.3","depth":2,"path":"mkfsvfat-create-fat-filesystems.md","ref":"mkfsvfat-create-fat-filesystems.md","articles":[]},"previous":{"title":"File Permission","level":"1.2.1","depth":2,"path":"file-permission.md","ref":"file-permission.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"dd.md","mtime":"2017-10-06T07:53:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-31T03:50:35.079Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Disk Duplication","level":"1.2.2","depth":2,"next":{"title":"Create FAT Filesystems","level":"1.2.3","depth":2,"path":"mkfsvfat-create-fat-filesystems.md","ref":"mkfsvfat-create-fat-filesystems.md","articles":[]},"previous":{"title":"File Permissions","level":"1.2.1","depth":2,"path":"file-permission.md","ref":"file-permission.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"dd.md","mtime":"2017-10-31T12:30:42.498Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

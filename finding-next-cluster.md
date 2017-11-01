@@ -1,6 +1,8 @@
 # Finding Next Cluster {#finding-next-cluster}
 
-After reading the current cluster, how can we advance to the next cluster? We have to check out the FAT table. With the current cluster number, we are guaranteed to get the next cluster in FAT, or a EOF.
+After reading the current cluster, how can we advance to the next cluster? 
+
+**Answer**: by checking the FAT table. With the current cluster number, we can get the next cluster in FAT, or a EOF.
 
 How can we know the terminating condition? There are three conditions in total. If we encounter these during search, that means it reaches the end.
 

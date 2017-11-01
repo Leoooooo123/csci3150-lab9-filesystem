@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>mkfs.vfat: Create FAT Filesystems · GitBook</title>
+        <title>Create FAT Filesystems · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -123,7 +123,7 @@
                 <a href="file-permission.html">
             
                     
-                    File Permission
+                    File Permissions
             
                 </a>
             
@@ -136,7 +136,7 @@
                 <a href="dd.html">
             
                     
-                    dd
+                    Disk Duplication
             
                 </a>
             
@@ -149,7 +149,7 @@
                 <a href="mkfsvfat-create-fat-filesystems.html">
             
                     
-                    mkfs.vfat: Create FAT Filesystems
+                    Create FAT Filesystems
             
                 </a>
             
@@ -183,7 +183,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="viewing-with-hex-editor.html">
+        <li class="chapter " data-level="1.2.6" data-path="demo.html">
+            
+                <a href="demo.html">
+            
+                    
+                    Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="viewing-with-hex-editor.html">
             
                 <a href="viewing-with-hex-editor.html">
             
@@ -197,7 +210,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.6.1" data-path="endian-ness-in-fat32.html">
+        <li class="chapter " data-level="1.2.7.1" data-path="endian-ness-in-fat32.html">
             
                 <a href="endian-ness-in-fat32.html">
             
@@ -238,7 +251,7 @@
                 <a href="directory-related-calls.html">
             
                     
-                    Directory Related Calls
+                    Directory Related Calls in C Language
             
                 </a>
             
@@ -418,7 +431,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >mkfs.vfat: Create FAT Filesystems</a>
+        <a href="." >Create FAT Filesystems</a>
     </h1>
 </div>
 
@@ -434,8 +447,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="mkfsvfat-create-fat-filesystems"><code>mkfs.vfat</code>: Create FAT Filesystems </h1>
-<p>After we create a blank disk, we have to initalize it with a file system before we can use it.</p>
-<p>In Linux, we have a command<code>mkfs.vfat</code>to format the disk to FAT.</p>
+<p>After creating a blank disk, we have to initalize it with a file system before we can use it.</p>
+<p>In Linux, we have a command <code>mkfs.vfat</code> to format the disk to FAT.</p>
 <h2 id="usage">Usage </h2>
 <pre><code>mkfs.vfat -F FAT-size -f NUMFAT -S logical-sector-size -s sectors-per-cluster -R number-of-reserved-sectors DEVICE
 </code></pre><p>You can control various parameters of the FAT filesystem.</p>
@@ -450,7 +463,6 @@
 <pre><code>mkfs.vfat -F 32 -f 2 -S 512 -s 1 -R 32 test.disk
 </code></pre><p><img src="assets/mkfs.png" alt=""></p>
 <p>Then the virtual disk we created earlier is now initialized.</p>
-<p><img src="assets/mount.png" alt=""></p>
 
                                 
                                 </section>
@@ -478,7 +490,7 @@
 
             
                 
-                <a href="dd.html" class="navigation navigation-prev " aria-label="Previous page: dd">
+                <a href="dd.html" class="navigation navigation-prev " aria-label="Previous page: Disk Duplication">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -494,7 +506,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mkfs.vfat: Create FAT Filesystems","level":"1.2.3","depth":2,"next":{"title":"Check and Repair FAT filesystem","level":"1.2.4","depth":2,"path":"check-and-repair-fat-filesystem.md","ref":"check-and-repair-fat-filesystem.md","articles":[]},"previous":{"title":"dd","level":"1.2.2","depth":2,"path":"dd.md","ref":"dd.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mkfsvfat-create-fat-filesystems.md","mtime":"2017-10-06T08:41:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-31T03:50:35.079Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Create FAT Filesystems","level":"1.2.3","depth":2,"next":{"title":"Check and Repair FAT filesystem","level":"1.2.4","depth":2,"path":"check-and-repair-fat-filesystem.md","ref":"check-and-repair-fat-filesystem.md","articles":[]},"previous":{"title":"Disk Duplication","level":"1.2.2","depth":2,"path":"dd.md","ref":"dd.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mkfsvfat-create-fat-filesystems.md","mtime":"2017-10-31T12:45:12.363Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

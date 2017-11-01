@@ -1,35 +1,34 @@
 # Mount {#mount}
 
-In Unix, all files are arranged under a big tree '/'. Uing`mount`can attach your device to it so that user can access.
+The `mount` command mounts a storage device or file system, making it accessible and attaching it to an existing directory structure. This attached directory is called a **mount point**. In this way, users can access a storage device or filesystem just like a normal directory.
 
-`mount`connects the device to a **mount point** \(A directory\). User can access it just like as a normal directory.
-
-Remember to **unmount** after use, otherwise the file system is not fully synchonized, causing loss of data.
+Remember to **unmount** after using, otherwise the file system is not fully synchonized, which will cause loss of data.
 
 ## Steps {#steps}
 
-1. First create a mount point at VM.
+1. First, create a **mount point**:
 
    ```
    $ mkdir ~/rd
 
    ```
 
-2. Then we mount the disk to the mount point.
+2. Then, we mount the disk to the **mount point**:
 
    ```
    $ sudo mount -t vfat -o loop test.disk ~/rd
 
    ```
 
-3. After that we can unmount the disk by:
+3. After that, we can unmount the disk by:
 
    ```
    $ sudo umount ~/rd
 
    ```
 
-## How to solve device busy problem {#how-to-solve-device-busy-problem}
+
+## How to solve device busy problem {#how-to-solve-device-busy-problem} (Study by yourself)
 
 There is the case where a process continously occupies the device such that you cannot unmount it.![](assets/umount_failed.png)
 

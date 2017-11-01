@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>File Permission · GitBook</title>
+        <title>File Permissions · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -123,7 +123,7 @@
                 <a href="file-permission.html">
             
                     
-                    File Permission
+                    File Permissions
             
                 </a>
             
@@ -136,7 +136,7 @@
                 <a href="dd.html">
             
                     
-                    dd
+                    Disk Duplication
             
                 </a>
             
@@ -149,7 +149,7 @@
                 <a href="mkfsvfat-create-fat-filesystems.html">
             
                     
-                    mkfs.vfat: Create FAT Filesystems
+                    Create FAT Filesystems
             
                 </a>
             
@@ -183,7 +183,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="viewing-with-hex-editor.html">
+        <li class="chapter " data-level="1.2.6" data-path="demo.html">
+            
+                <a href="demo.html">
+            
+                    
+                    Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="viewing-with-hex-editor.html">
             
                 <a href="viewing-with-hex-editor.html">
             
@@ -197,7 +210,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.6.1" data-path="endian-ness-in-fat32.html">
+        <li class="chapter " data-level="1.2.7.1" data-path="endian-ness-in-fat32.html">
             
                 <a href="endian-ness-in-fat32.html">
             
@@ -238,7 +251,7 @@
                 <a href="directory-related-calls.html">
             
                     
-                    Directory Related Calls
+                    Directory Related Calls in C Language
             
                 </a>
             
@@ -418,7 +431,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >File Permission</a>
+        <a href="." >File Permissions</a>
     </h1>
 </div>
 
@@ -435,18 +448,33 @@
                                 
                                 <h1 id="file-permission">File Permission </h1>
 <h2 id="linux-permissions-basics">Linux Permissions Basics </h2>
-<p>Each file in Linux is owned by a single user and a single group, and has its own access permissions. The most common way to view the permissions of a file is<code>ls -l myfile</code>.<img src="assets/ls_l.png" alt=""></p>
+<p>Each file in Linux is owned by a single user and a single group, and has its own access permissions. The most common way to view the permissions of a file is <code>ls -l myfile</code>.<img src="assets/ls_l.png" alt=""></p>
 <p>The meaning of each column is shown as follows.<img src="assets/ls_l1.png" alt=""></p>
-<p>The first column is file mode. Files mode contains information of file type and permissions. The owner of a file belongs to user category. The members of the file&apos;s group belong to group category while other users that are not part of the user or group categories belong to other category. Every category has three permissions: read, write, execute that are indicated by<code>R</code>,<code>W</code>,<code>X</code>respectively. A hyphen (-) in the place of one of these characters indicates that the respective permission is not available for the respective category. We can see that execute permission of file &quot;myfile&quot; do not available for all three categories.</p>
-<p><img src="assets/mode.png" alt="">Permissions can also be represented with octal notation. Each permissions category (owner, group owner, other) is represented by a number between 0 and 7. We let read permissions equals to 4 while write and execute permission equal to 2 and 1 respectively. Add up the numbers associated with the type of permissions we would like to grant for each category. This will be a number between 0 and 7 (0 representing no permissions and 7 representing full read, write, and execute permissions) for each category. For example &quot;777&quot; means that all there permissions categories have read, write and execute permissions.</p>
+<p>The first column is <strong>file mode</strong>. </p>
+<ul>
+<li>Files mode contains information of file type and permissions. </li>
+<li>The owner of a file belongs to <strong>user</strong> category. </li>
+<li>The members of the file&apos;s group belong to <strong>group</strong> category while other users that are not part of the user or group categories belong to <strong>other</strong> category. </li>
+</ul>
+<p><img src="assets/mode.png" alt=""></p>
+<p>Every category has three permissions: <code>read</code>, <code>write</code>, <code>execute</code> indicated by<code>r</code>,<code>w</code>,<code>x</code>respectively. A hyphen (-) in the place of one of these characters indicates that the respective permission is not available for the respective category. We can see that execute permission of file &quot;myfile&quot; do not available for all three categories.</p>
+<p>Permissions can also be represented with <strong>octal notation</strong>. </p>
+<ul>
+<li>Each permission category (owner, group, other) is represented by a number between 0 and 7. </li>
+<li>We let <code>read</code> permission equals to 4, while <code>write</code> and <code>execute</code> permissions equal to 2 and 1 respectively. </li>
+<li>Add up the numbers associated with the type of permissions we would like to grant for each category. This will be a number between 0 and 7 (0 representing no permissions and 7 representing full <code>read</code>, <code>write</code>, and <code>execute</code> permissions) for each category. </li>
+</ul>
+<p>For example, &quot;777&quot; means that all these permission categories have <code>read</code>, <code>write</code> and <code>execute</code> permissions.</p>
 <h3 id="modifying-permissions--chmod">Modifying Permissions -- chmod </h3>
-<p>Change a file&apos;s permissions, we can use chmod command with octal notation. For example, we want to execute &quot;myfile&quot; as the owner and we don&apos;t want anyone else to modify the file, including group owners. Then we can command</p>
+<p>To change a file&apos;s permissions, we can use the <code>chmod</code> command with octal notation. </p>
+<p>For example, we want to execute &quot;myfile&quot; as the owner and we don&apos;t want anyone else to modify the file, including group owners. Then we can command</p>
 <pre><code>chmod 744 myfile
 </code></pre><p><img src="assets/chmod.png" alt=""></p>
 <p>As you can see, the permissions were assigned correctly.</p>
 <h3 id="setting-default-permissions--umask">Setting Default Permissions -- umask </h3>
 <p><code>umask</code>defines the default permissions for newly created files based on the &quot;base&quot; permissions set defined for files and directories. Usually the base permissions set is 777, that is files or directories can be read, write, and execute permissions for all users. Base permissions subtract &quot;mask&quot;, then we get the default permissions for newly created files.</p>
-<p>For example, we use touch to creat a new file &quot;test&quot;, we see the default permissions of &quot;test&quot; is 664. If we want to change the default permission to be 666, then we can use umask to set &quot;mask&quot; to be 777-666=111, as shown in the below picture.<img src="assets/umask.png" alt=""></p>
+<p>For example, we use <code>touch</code> to creat a new file &quot;test&quot;, where the default permissions of &quot;test&quot; are <code>664</code>. If we want to change the default permissions to be <code>666</code>, then we can use <code>umask</code> to set &quot;mask&quot; to be 777-666=111, as shown in the below picture.
+<img src="assets/umask.png" alt=""></p>
 
                                 
                                 </section>
@@ -479,7 +507,7 @@
                 </a>
                 
                 
-                <a href="dd.html" class="navigation navigation-next " aria-label="Next page: dd">
+                <a href="dd.html" class="navigation navigation-next " aria-label="Next page: Disk Duplication">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -490,7 +518,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"File Permission","level":"1.2.1","depth":2,"next":{"title":"dd","level":"1.2.2","depth":2,"path":"dd.md","ref":"dd.md","articles":[]},"previous":{"title":"Important Commands","level":"1.2","depth":1,"path":"important-commands.md","ref":"important-commands.md","articles":[{"title":"File Permission","level":"1.2.1","depth":2,"path":"file-permission.md","ref":"file-permission.md","articles":[]},{"title":"dd","level":"1.2.2","depth":2,"path":"dd.md","ref":"dd.md","articles":[]},{"title":"mkfs.vfat: Create FAT Filesystems","level":"1.2.3","depth":2,"path":"mkfsvfat-create-fat-filesystems.md","ref":"mkfsvfat-create-fat-filesystems.md","articles":[]},{"title":"Check and Repair FAT filesystem","level":"1.2.4","depth":2,"path":"check-and-repair-fat-filesystem.md","ref":"check-and-repair-fat-filesystem.md","articles":[]},{"title":"Mount","level":"1.2.5","depth":2,"path":"mount.md","ref":"mount.md","articles":[]},{"title":"Viewing with Hex Editor","level":"1.2.6","depth":2,"path":"viewing-with-hex-editor.md","ref":"viewing-with-hex-editor.md","articles":[{"title":"Endian-ness in FAT32","level":"1.2.6.1","depth":3,"path":"endian-ness-in-fat32.md","ref":"endian-ness-in-fat32.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"file-permission.md","mtime":"2017-10-06T07:53:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-31T03:50:35.079Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"File Permissions","level":"1.2.1","depth":2,"next":{"title":"Disk Duplication","level":"1.2.2","depth":2,"path":"dd.md","ref":"dd.md","articles":[]},"previous":{"title":"Important Commands","level":"1.2","depth":1,"path":"important-commands.md","ref":"important-commands.md","articles":[{"title":"File Permissions","level":"1.2.1","depth":2,"path":"file-permission.md","ref":"file-permission.md","articles":[]},{"title":"Disk Duplication","level":"1.2.2","depth":2,"path":"dd.md","ref":"dd.md","articles":[]},{"title":"Create FAT Filesystems","level":"1.2.3","depth":2,"path":"mkfsvfat-create-fat-filesystems.md","ref":"mkfsvfat-create-fat-filesystems.md","articles":[]},{"title":"Check and Repair FAT filesystem","level":"1.2.4","depth":2,"path":"check-and-repair-fat-filesystem.md","ref":"check-and-repair-fat-filesystem.md","articles":[]},{"title":"Mount","level":"1.2.5","depth":2,"path":"mount.md","ref":"mount.md","articles":[]},{"title":"Demo","level":"1.2.6","depth":2,"path":"demo.md","ref":"demo.md","articles":[]},{"title":"Viewing with Hex Editor","level":"1.2.7","depth":2,"path":"viewing-with-hex-editor.md","ref":"viewing-with-hex-editor.md","articles":[{"title":"Endian-ness in FAT32","level":"1.2.7.1","depth":3,"path":"endian-ness-in-fat32.md","ref":"endian-ness-in-fat32.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"file-permission.md","mtime":"2017-10-31T08:43:25.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -123,7 +123,7 @@
                 <a href="file-permission.html">
             
                     
-                    File Permission
+                    File Permissions
             
                 </a>
             
@@ -136,7 +136,7 @@
                 <a href="dd.html">
             
                     
-                    dd
+                    Disk Duplication
             
                 </a>
             
@@ -149,7 +149,7 @@
                 <a href="mkfsvfat-create-fat-filesystems.html">
             
                     
-                    mkfs.vfat: Create FAT Filesystems
+                    Create FAT Filesystems
             
                 </a>
             
@@ -183,7 +183,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="viewing-with-hex-editor.html">
+        <li class="chapter " data-level="1.2.6" data-path="demo.html">
+            
+                <a href="demo.html">
+            
+                    
+                    Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="viewing-with-hex-editor.html">
             
                 <a href="viewing-with-hex-editor.html">
             
@@ -197,7 +210,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.6.1" data-path="endian-ness-in-fat32.html">
+        <li class="chapter " data-level="1.2.7.1" data-path="endian-ness-in-fat32.html">
             
                 <a href="endian-ness-in-fat32.html">
             
@@ -238,7 +251,7 @@
                 <a href="directory-related-calls.html">
             
                     
-                    Directory Related Calls
+                    Directory Related Calls in C Language
             
                 </a>
             
@@ -433,7 +446,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="header-dir-entry">Header: Dir Entry </h1>
+                                <h1 id="header-dir-entry">Header: <code>msdos_dir_entry</code> </h1>
 <pre><code class="lang-c"><span class="hljs-keyword">struct</span> msdos_dir_entry {
         __u8    name[MSDOS_NAME];<span class="hljs-comment">/* name and extension */</span>
         __u8    attr;           <span class="hljs-comment">/* attribute bits */</span>
@@ -506,7 +519,7 @@
 </tr>
 </tbody>
 </table>
-<p>In C programming, we can apply bitwise AND (&amp;) to check a particular attribute, eg:</p>
+<p>In C programming, we can apply bitwise AND (&amp;) to check a particular attribute, e.g.,</p>
 <pre><code class="lang-c"><span class="hljs-keyword">if</span>((dir_entry.attr &amp; <span class="hljs-number">0x10</span>) != <span class="hljs-number">0</span>) {
   <span class="hljs-comment">/* It is a subdirectory */</span>
  }
@@ -554,7 +567,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Header: Dir Entry","level":"1.6.1.2","depth":3,"next":{"title":"Read the header","level":"1.6.1.3","depth":3,"path":"read-the-header.md","ref":"read-the-header.md","articles":[]},"previous":{"title":"Header: Boot Sector","level":"1.6.1.1","depth":3,"path":"header-boot-sector.md","ref":"header-boot-sector.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"header-dir-entry.md","mtime":"2017-10-06T09:02:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-31T03:50:35.079Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Header: Dir Entry","level":"1.6.1.2","depth":3,"next":{"title":"Read the header","level":"1.6.1.3","depth":3,"path":"read-the-header.md","ref":"read-the-header.md","articles":[]},"previous":{"title":"Header: Boot Sector","level":"1.6.1.1","depth":3,"path":"header-boot-sector.md","ref":"header-boot-sector.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"header-dir-entry.md","mtime":"2017-11-01T03:20:09.686Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

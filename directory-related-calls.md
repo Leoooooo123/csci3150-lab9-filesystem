@@ -1,4 +1,4 @@
-# Directory Related Calls {#directory-related-calls}
+# Directory Related Calls in C Language {#directory-related-calls}
 
 Here are the summary of the system calls to manipulate the directories.
 
@@ -6,11 +6,11 @@ Here are the summary of the system calls to manipulate the directories.
 | :--- | :--- | :--- |
 | mkdir\(const char \* pathname, mode\) | Create a dirctory | 0 if OK, -1 on error |
 | rmdir\(const char \* pathname\) | Delete a directory | 0 if OK, -1 on error |
-| opendir\(const char \* pathname\) | Open a directory | Pointer of DIR if OK, NULL on error |
-| readdir\(DIR \* dp\) | Read a directory | Pointer of dirent if OK, NULL at the end of directory or error |
+| opendir\(const char \* pathname\) | Open a directory | Pointer of `DIR` if OK, NULL on error |
+| readdir\(DIR \* dp\) | Read a directory | Pointer of `dirent` if OK, `NULL` at the end of directory or error |
 | closedir\(DIR \* dp\) | Close a directory | 0 if OK, -1 on error |
 
-In Unix, we have a special data structure for a directory, namely`DIR`and`dirent`.
+In \*nix, we have a special data structure for a directory, namely`DIR`and`dirent`.
 
 `DIR`is a structure for directory streams, and`dirent`has the following members:
 
@@ -21,7 +21,7 @@ In Unix, we have a special data structure for a directory, namely`DIR`and`dirent
 
 ## Example {#example}
 
-In the following, we try to make use of`opendir`and`readdir`to transverse the directory,simulating a simple`ls`.
+In the following, we try to make use of`opendir`and`readdir`to traverse the directory, simulating a simple`ls`.
 
 ```c
 /* listdir.c */

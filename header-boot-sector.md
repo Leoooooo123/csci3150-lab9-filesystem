@@ -1,4 +1,4 @@
-# Header: Boot Sector {#header-boot-sector}
+# Header: `fat_boot_sector` {#header-boot-sector}
 
 ```c
  struct fat_boot_sector {
@@ -40,20 +40,16 @@ struct fat_boot_sector boot_entry;
 
 The following can be retrieved directly from the structure:
 
-1. Sectors Per Cluster \(sec\_per\_clus\)
-2. Number of Reserved Sector\(reserved\)
-3. Number of FATs \(fats\)
-4. Sector per FAT \(fat\_length\)
+1. Number of FATs \(`fats`\)
+2. Number of sectors per cluster  \(`sec_per_clus`\)
+3. Number of Reserved Sector\(`reserved`\)
 
-And these need some manipulations/calculations
+And the following information requires some manipulations/calculations
 
-1. Bytes Per Sector \(sector\_size\[0\] + sector\_size\[1\] 
-   &lt;
-   &lt;
-    8\)
-2. Bytes Per Cluster\(Bytes Per Sector \* sec\_per\_clus\)
-3. First FAT Starting Position \(Bytes Per Sector \* Number of Reserved Sector\)
-4. Data Area Starting Position \(Number of Reserved Sector + Number of Fats \* Sector per FAT\) \* Bytes Per Sector
+4. Bytes Per Sector \(`sector_size[0] + sector_size[1] << 8`\)
+5. First FAT Starting Position \(Bytes Per Sector \* Number of Reserved Sector\)
+6. Data Area Starting Position \(Bytes Per Sector \* \(Number of Reserved Sector + Number of FATs \* `fat_length`\)\)
 
+Here, `fat_length` is the number of sectors per FAT.
 
-
+![](assets/FATOverview.png)

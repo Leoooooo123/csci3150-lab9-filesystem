@@ -6,13 +6,13 @@
 
 This figure summarized the FAT32 filesystem.
 
-The first area contains the_reserved area\_and\_FAT Area_. They are counted in term of **sectors**.
+The first area contains the _reserved area_ and _FAT area_. They are counted in term of **sectors**.
 
-Immediately after_FAT area_, it is the starting point of **cluster 2**. It contains the information on the root directory and all data stored. In these areas they are counted in term of **clusters**.
+Immediately after _FAT area_, it is the starting point of **cluster 2**. It contains the information on the root directory and all data stored. In these areas they are counted in term of **clusters**.
 
 ## Boot sector {#boot-sector}
 
-It is always at the\_first\_sector of the disk, and it is used for starting up your computer. It contains:
+It is always at the **first** sector of the disk, and it is used for starting up your computer. It contains:
 
 * An x86-based CPU jump instruction.
 

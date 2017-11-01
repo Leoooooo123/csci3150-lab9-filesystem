@@ -123,7 +123,7 @@
                 <a href="file-permission.html">
             
                     
-                    File Permission
+                    File Permissions
             
                 </a>
             
@@ -136,7 +136,7 @@
                 <a href="dd.html">
             
                     
-                    dd
+                    Disk Duplication
             
                 </a>
             
@@ -149,7 +149,7 @@
                 <a href="mkfsvfat-create-fat-filesystems.html">
             
                     
-                    mkfs.vfat: Create FAT Filesystems
+                    Create FAT Filesystems
             
                 </a>
             
@@ -183,7 +183,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="viewing-with-hex-editor.html">
+        <li class="chapter " data-level="1.2.6" data-path="demo.html">
+            
+                <a href="demo.html">
+            
+                    
+                    Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="viewing-with-hex-editor.html">
             
                 <a href="viewing-with-hex-editor.html">
             
@@ -197,7 +210,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.6.1" data-path="endian-ness-in-fat32.html">
+        <li class="chapter " data-level="1.2.7.1" data-path="endian-ness-in-fat32.html">
             
                 <a href="endian-ness-in-fat32.html">
             
@@ -238,7 +251,7 @@
                 <a href="directory-related-calls.html">
             
                     
-                    Directory Related Calls
+                    Directory Related Calls in C Language
             
                 </a>
             
@@ -433,32 +446,53 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tranversing-cluster">Tranversing Cluster </h1>
-<p>In order to search the target cluster, we need to navigate to the Root Directory and search the item one by one. As the root directory starts from cluster 2, therefore the first search should begin at cluster 2.</p>
+                                <h1 id="traversing-cluster">Traversing Cluster </h1>
+<p>In order to search the target cluster, we need to navigate to the Root Directory and search the items one by one. Since the root directory starts from cluster 2, the first search should begin at cluster 2.</p>
 <pre><code class="lang-c"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">uint32_t</span> i = <span class="hljs-number">0</span>; i &lt; bpc / <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> msdos_dir_entry); i++) {
               <span class="hljs-keyword">struct</span> msdos_dir_entry dir_entry;
               <span class="hljs-keyword">size_t</span> ret = fread(&amp;dir_entry, <span class="hljs-number">1</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> msdos_dir_entry), fp);
               <span class="hljs-keyword">if</span>(dir_entry.name[<span class="hljs-number">0</span>] != <span class="hljs-number">0x00</span>) {
                   <span class="hljs-keyword">if</span>(dir_entry.attr != <span class="hljs-number">0x0f</span>) {
-                      <span class="hljs-keyword">if</span>(dir_entry.name[<span class="hljs-number">0</span>] == <span class="hljs-number">0xe5</span>) {
-                          dir_entry.name[<span class="hljs-number">0</span>] = <span class="hljs-string">&apos;?&apos;</span>;
-                      }
-                      <span class="hljs-keyword">char</span> filename[<span class="hljs-number">14</span>] = { <span class="hljs-number">0</span> };
-                      convert_83filename(dir_entry.name, filename);
-                      <span class="hljs-keyword">uint32_t</span> dir_first_cluster = get_dir_first_cluster(&amp;dir_entry);
-                      <span class="hljs-keyword">if</span>((dir_entry.attr &amp; <span class="hljs-number">0x10</span>) != <span class="hljs-number">0</span>) {
-                          <span class="hljs-built_in">strcat</span>(filename, <span class="hljs-string">&quot;/&quot;</span>);
-                      }
-                      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d, &quot;</span>, idx++);
-                      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s, &quot;</span>, filename);
-                      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d, &quot;</span>, dir_entry.size);
-                      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, dir_first_cluster);
-                      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+                    <span class="hljs-comment">// Insert your code here</span>
+                    <span class="hljs-comment">/*
+                    Read the file name:
+                      1. Check whether the file is deleted or not
+                      2. Convert to 8.3 format names
+                      3. Check whether it is a subdirectory
+
+                    uint32_t dir_first_cluster = get_dir_first_cluster(&amp;dir_entry);
+                    printf(&quot;%d, &quot;, _);
+                    printf(&quot;%s, &quot;, _);
+                    printf(&quot;%d, &quot;, _);
+                    printf(&quot;%d&quot;, _);
+                    printf(&quot;\n&quot;);
+                    */</span>
                   }
                   <span class="hljs-keyword">else</span> {
                       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d, LFN entry\n&quot;</span>, idx++);
                   }
               }
+</code></pre>
+<p>Reference:</p>
+<pre><code class="lang-c"><span class="hljs-keyword">struct</span> msdos_dir_entry {
+        __u8    name[MSDOS_NAME];<span class="hljs-comment">/* name and extension */</span>
+        __u8    attr;           <span class="hljs-comment">/* attribute bits */</span>
+        __u8    lcase;          <span class="hljs-comment">/* Case for base and extension */</span>
+        __u8    ctime_cs;       <span class="hljs-comment">/* Creation time, centiseconds (0-199) */</span>
+        __le16  ctime;          <span class="hljs-comment">/* Creation time */</span>
+        __le16  cdate;          <span class="hljs-comment">/* Creation date */</span>
+        __le16  adate;          <span class="hljs-comment">/* Last access date */</span>
+        __le16  starthi;        <span class="hljs-comment">/* High 16 bits of cluster in FAT32 */</span>
+        __le16  time,date,start;<span class="hljs-comment">/* time, date and first cluster */</span>
+        __le32  size;           <span class="hljs-comment">/* file size (in bytes) */</span>
+};
+</code></pre>
+<p>Tips1: File Deletion and File name</p>
+<p>In FAT32, deleting a file does not mean to remove from the filesystem. It only deallocates the space that the file originally occupied and deletion is marked. In this case, the first character of the filename is marked with a special0xe5.</p>
+<p>Tip2: Check whether it is a subdirectory</p>
+<pre><code class="lang-c"><span class="hljs-keyword">if</span>((dir_entry.attr &amp; <span class="hljs-number">0x10</span>) != <span class="hljs-number">0</span>) {
+  <span class="hljs-comment">/* It is a subdirectory */</span>
+ }
 </code></pre>
 
                                 
@@ -503,7 +537,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Tranversing Cluster","level":"1.6.3","depth":2,"next":{"title":"Finding Next Cluster","level":"1.6.4","depth":2,"path":"finding-next-cluster.md","ref":"finding-next-cluster.md","articles":[]},"previous":{"title":"8+3 File Name","level":"1.6.2","depth":2,"path":"8+3-file-name.md","ref":"8+3-file-name.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tranversing-cluster.md","mtime":"2017-10-06T09:04:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-31T03:50:35.079Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Tranversing Cluster","level":"1.6.3","depth":2,"next":{"title":"Finding Next Cluster","level":"1.6.4","depth":2,"path":"finding-next-cluster.md","ref":"finding-next-cluster.md","articles":[]},"previous":{"title":"8+3 File Name","level":"1.6.2","depth":2,"path":"8+3-file-name.md","ref":"8+3-file-name.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tranversing-cluster.md","mtime":"2017-11-01T03:31:23.554Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

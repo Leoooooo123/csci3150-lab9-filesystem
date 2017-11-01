@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Viewing with Hex Editor · GitBook</title>
+        <title>Demo · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="endian-ness-in-fat32.html" />
+    <link rel="next" href="viewing-with-hex-editor.html" />
     
     
-    <link rel="prev" href="demo.html" />
+    <link rel="prev" href="mount.html" />
     
 
     </head>
@@ -183,7 +183,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="demo.html">
+        <li class="chapter active" data-level="1.2.6" data-path="demo.html">
             
                 <a href="demo.html">
             
@@ -196,7 +196,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.7" data-path="viewing-with-hex-editor.html">
+        <li class="chapter " data-level="1.2.7" data-path="viewing-with-hex-editor.html">
             
                 <a href="viewing-with-hex-editor.html">
             
@@ -431,7 +431,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Viewing with Hex Editor</a>
+        <a href="." >Demo</a>
     </h1>
 </div>
 
@@ -446,24 +446,41 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="viewing-with-hex-editor">Viewing with Hex Editor </h1>
-<p>In order to analyze the file system, we have to view it using hexadecimal editor.</p>
-<p>There are two common hex editors in Ubuntu:</p>
-<ul>
-<li>hexedit</li>
-<li>xxd</li>
-</ul>
-<p>Now try to view the disk file by hexedit. If you haven&apos;t unmount it, do it now.</p>
-<p>In the terminal,</p>
-<pre><code>$ hexedit test.disk
-</code></pre><p><img src="assets/hexedit.png" alt=""></p>
-<p>There are three columns in the output:</p>
+                                <h1 id="demo">Demo </h1>
+<p>Now we can try the whole demo example with the following commands:</p>
 <ol>
-<li>Line number in hexadecimal</li>
-<li>Content in Hexadeciaml</li>
-<li>Content in ASCII</li>
+<li><p>Create a new file <code>test.disk</code> to hold the virtual drive volume by pre-filling the file with data:</p>
+<pre><code>~$ dd if=/dev/zero of=test.disk bs=64M count=1
+</code></pre></li>
+<li><p>Next up we give the volume a filesystem. Here, we format it with FAT32:</p>
+<pre><code>~$ mkfs.vfat -F 32 -f 2 -S 512 -s 1 -R 32 test.disk
+</code></pre></li>
+<li><p>Check the details of the FAT filesystem:</p>
+<pre><code>~$ dosfsck -v test.disk
+</code></pre></li>
+<li><p>Mount: to mount the formatted file <code>test.disk</code> from the terminal, you will need to first create a folder to mount it to. Let&#x2019;s say we want to mount it to the folder <code>~/rd</code>. </p>
+</li>
 </ol>
-<p>For one hex digit, 4 bits (2^4 = 16) are needed to represent 0-15(0-F). Two hex digits occipies 8bits = 1 byte, therefore they are in group of two.</p>
+<p>** Here is the procedure:</p>
+<ul>
+<li>First create the folder there. <pre><code>~$ mkdir ~/rd
+</code></pre></li>
+<li>Then mount the file <code>test.disk</code> to the folder <code>~/rd</code>: <pre><code>~$ sudo mount -t vfat -o loop test.disk ~/rd
+</code></pre></li>
+<li>Now we can create/copy files to the drive:<pre><code>~$ cd ~/rd
+~/rd$ ls
+~/rd$ sudo touch a
+~/rd$ ls
+</code></pre></li>
+<li>When we finished, <code>unmount</code> the volume by running this command:<pre><code>~/rd$ cd -
+$ sudo umount ~/rd
+</code></pre></li>
+</ul>
+<p>Here are the results of the demo:
+<img src="assets/dd.png" alt="">
+<img src="assets/mkfs.png" alt="">
+<img src="assets/dosfsck.png" alt="">
+<img src="assets/mount.png" alt=""></p>
 
                                 
                                 </section>
@@ -491,12 +508,12 @@
 
             
                 
-                <a href="demo.html" class="navigation navigation-prev " aria-label="Previous page: Demo">
+                <a href="mount.html" class="navigation navigation-prev " aria-label="Previous page: Mount">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="endian-ness-in-fat32.html" class="navigation navigation-next " aria-label="Next page: Endian-ness in FAT32">
+                <a href="viewing-with-hex-editor.html" class="navigation navigation-next " aria-label="Next page: Viewing with Hex Editor">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -507,7 +524,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Viewing with Hex Editor","level":"1.2.7","depth":2,"next":{"title":"Endian-ness in FAT32","level":"1.2.7.1","depth":3,"path":"endian-ness-in-fat32.md","ref":"endian-ness-in-fat32.md","articles":[]},"previous":{"title":"Demo","level":"1.2.6","depth":2,"path":"demo.md","ref":"demo.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"viewing-with-hex-editor.md","mtime":"2017-10-06T07:52:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Demo","level":"1.2.6","depth":2,"next":{"title":"Viewing with Hex Editor","level":"1.2.7","depth":2,"path":"viewing-with-hex-editor.md","ref":"viewing-with-hex-editor.md","articles":[{"title":"Endian-ness in FAT32","level":"1.2.7.1","depth":3,"path":"endian-ness-in-fat32.md","ref":"endian-ness-in-fat32.md","articles":[]}]},"previous":{"title":"Mount","level":"1.2.5","depth":2,"path":"mount.md","ref":"mount.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"demo.md","mtime":"2017-10-31T12:54:49.666Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

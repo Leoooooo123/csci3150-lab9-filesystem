@@ -123,7 +123,7 @@
                 <a href="file-permission.html">
             
                     
-                    File Permission
+                    File Permissions
             
                 </a>
             
@@ -136,7 +136,7 @@
                 <a href="dd.html">
             
                     
-                    dd
+                    Disk Duplication
             
                 </a>
             
@@ -149,7 +149,7 @@
                 <a href="mkfsvfat-create-fat-filesystems.html">
             
                     
-                    mkfs.vfat: Create FAT Filesystems
+                    Create FAT Filesystems
             
                 </a>
             
@@ -183,7 +183,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="viewing-with-hex-editor.html">
+        <li class="chapter " data-level="1.2.6" data-path="demo.html">
+            
+                <a href="demo.html">
+            
+                    
+                    Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="viewing-with-hex-editor.html">
             
                 <a href="viewing-with-hex-editor.html">
             
@@ -197,7 +210,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.6.1" data-path="endian-ness-in-fat32.html">
+        <li class="chapter " data-level="1.2.7.1" data-path="endian-ness-in-fat32.html">
             
                 <a href="endian-ness-in-fat32.html">
             
@@ -238,7 +251,7 @@
                 <a href="directory-related-calls.html">
             
                     
-                    Directory Related Calls
+                    Directory Related Calls in C Language
             
                 </a>
             
@@ -433,8 +446,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>To the kernel, all open files are referred to by File Descriptors. A file descriptor is a non-negative number. When we open an existing file or create a new file, the kernel returns a file descriptor to the process. When we want to read or write a file, we identify the file with the file descriptor.</p>
-<p>Each Linux process (except perhaps a daemon) should expect to have three standard POSIX file descriptors:</p>
+                                <h1 id="linux-file-system-calls">Linux File System Calls </h1>
+<p>To the kernel, all open files are referred to by <strong>File descriptors</strong>. A file descriptor is a non-negative number. When we open an existing file or create a new file, the kernel returns a file descriptor to the process. When we want to read or write a file, we identify the file with the file descriptor.</p>
+<p>Each Linux process (except perhaps a daemon) should expect to have <strong>three</strong> standard POSIX file descriptors:</p>
 <table>
 <thead>
 <tr>
@@ -461,9 +475,20 @@
 </tr>
 </tbody>
 </table>
-<p>There are three &quot;system file tables&quot;: There is a file descriptor table that maps file descriptors (small integers) to entries in the open file table. Each entry in the open file table contains (among other things) a file offset and a pointer to the in-memory inode table. In open file table, one file table entry per open() call, and it is shared if the file descriptor is dup()ed or fork()ed.</p>
+<p>There are three &quot;system file tables&quot;: </p>
+<ul>
+<li>There is a <strong>file descriptor table</strong> that maps file descriptors (small integers) to entries in the <strong>open file table</strong>.</li>
+<li>Each entry in the <strong>open file table</strong> contains (among other things) a file offset and a pointer to the in-memory <strong>inode table</strong>. </li>
+<li>In <strong>open file table</strong>, one file table entry has an <code>open()</code> call, and it is shared if the file descriptor is <code>dup()ed</code> or <code>fork()ed</code>.</li>
+</ul>
 <p><img src="assets/fd.png" alt=""></p>
-<p>File descriptors for a single process, file table and inode table. Note that multiple file descriptors can refer to the same file table entry (e.g., as a result of the dup system call) and that multiple file table entries can in turn refer to the same inode (if it has been opened multiple times; the table is still simplified because it represents inodes by file names, even though an inode can have multiple names). File descriptor 3 does not refer to anything in the file table, signifying that it has been closed.</p>
+<p>Figure: file descriptors for a single process, file table and inode table. </p>
+<p>Note that </p>
+<ul>
+<li>multiple <strong>file descriptors</strong> can refer to the same <strong>file table</strong> entry (e.g., as a result of the dup system call);</li>
+<li>multiple <strong>file table</strong> entries can in turn refer to the same <strong>inode</strong> (if it has been opened multiple times; the table is still simplified because it represents inodes by file names, even though an inode can have multiple names). </li>
+<li>File descriptor 3 does not refer to anything in the file table, signifying that it has been <strong>closed</strong>.</li>
+</ul>
 
                                 
                                 </section>
@@ -496,7 +521,7 @@
                 </a>
                 
                 
-                <a href="directory-related-calls.html" class="navigation navigation-next " aria-label="Next page: Directory Related Calls">
+                <a href="directory-related-calls.html" class="navigation navigation-next " aria-label="Next page: Directory Related Calls in C Language">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -507,7 +532,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux File System Calls","level":"1.3","depth":1,"next":{"title":"Directory Related Calls","level":"1.4","depth":1,"path":"directory-related-calls.md","ref":"directory-related-calls.md","articles":[]},"previous":{"title":"Endian-ness in FAT32","level":"1.2.6.1","depth":3,"path":"endian-ness-in-fat32.md","ref":"endian-ness-in-fat32.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux-file-system-calls.md","mtime":"2017-10-06T08:52:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-31T03:50:35.079Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux File System Calls","level":"1.3","depth":1,"next":{"title":"Directory Related Calls in C Language","level":"1.4","depth":1,"path":"directory-related-calls.md","ref":"directory-related-calls.md","articles":[]},"previous":{"title":"Endian-ness in FAT32","level":"1.2.7.1","depth":3,"path":"endian-ness-in-fat32.md","ref":"endian-ness-in-fat32.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux-file-system-calls.md","mtime":"2017-10-31T13:06:30.899Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-01T03:34:30.814Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
