@@ -19,7 +19,7 @@
     * [Header: Dir Entry](header-dir-entry.md)
     * [Read the header](read-the-header.md)
   * [8+3 File Name](8+3-file-name.md)
-  * [Tranversing Cluster](tranversing-cluster.md)
+  * [Traversing Cluster](traversing-cluster.md)
   * [Finding Next Cluster](finding-next-cluster.md)
   * [Reference](reference.md)
   
