@@ -13,8 +13,8 @@ After you declare the structure for boot sector, you can read the device now.
     fp = fopen(device_name, "r+");
     if(fp == NULL)
         exit(-1);
-    uint32_t boot_entry_size = fread(&boot_entry, 1, sizeof(struct fat_boot_sector), fp);
-    if(boot_entry_size != sizeof(struct fat_boot_sector))
+    uint32_t boot_entry_size = fread(&boot_entry, sizeof(struct fat_boot_sector), 1, fp);
+    if(boot_entry_size != 1)
         exit(-1);
     //  Bytes per sector. Allowed values include 512, 1024, 2048, and 4096
     uint16_t bps = boot_entry.sector_size[0] + ((uint16_t) boot_entry.sector_size[1] << 8);
@@ -32,7 +32,6 @@ After you declare the structure for boot sector, you can read the device now.
     disk_info->fat_offset = fat_offset;
     disk_info->num_fats = boot_entry.fats;
     disk_info->fat_size = boot_entry.fat32.length;
-
 ```
 
 In the example, the program takes in a`device_name`, and read it from the beginning to the size of`fat_boot_sector`structure. After that the parameters have been stored and can be retrieved from the variables in the structure.
