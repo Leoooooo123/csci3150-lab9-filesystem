@@ -13,8 +13,8 @@ After you declare the structure for boot sector, you can read the device now.
     fp = fopen(device_name, "r+");
     if(fp == NULL)
         exit(-1);
-    uint32_t boot_entry_size = fread(&boot_entry, sizeof(struct fat_boot_sector), 1, fp);
-    if(boot_entry_size != 1)
+    uint32_t numItem = fread(&boot_entry, sizeof(struct fat_boot_sector), 1, fp);
+    if(numItem != 1)
         exit(-1);
     //  Bytes per sector. Allowed values include 512, 1024, 2048, and 4096
     uint16_t bps = boot_entry.sector_size[0] + ((uint16_t) boot_entry.sector_size[1] << 8);
